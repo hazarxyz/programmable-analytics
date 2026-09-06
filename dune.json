@@ -1,0 +1,25 @@
+{
+  "owner": "programmablehq",
+  "dashboard": {
+    "title": "Programmable Analytics",
+    "url": "https://dune.com/programmablehq/analytics",
+    "description": "Analytics for the Programmable ecosystem.",
+    "cards": [
+      {"title": "V4 burned", "visualization_id": 12643083, "query_id": 8626416, "column": "total_v4_burned", "decimals": 2},
+      {"title": "Supply burned", "visualization_id": 12643086, "query_id": 8626416, "column": "supply_burned_pct", "decimals": 4, "suffix": "%"},
+      {"title": "Burn transactions", "visualization_id": 12643089, "query_id": 8626416, "column": "burn_transactions", "decimals": 0}
+    ],
+    "refresh": {"provider": "Dune", "frequency": "daily", "window_utc": "21:30-22:00", "engine": "medium"}
+  },
+  "queries": [
+    {"id": 8626416, "file": "queries/v4_burns___8626416.sql", "name": "V4 burns | Robinhood Chain"}
+  ],
+  "network": {
+    "name": "Robinhood Chain",
+    "chain_id": 4663,
+    "token": "0xC60bA256B44334A0Cd2C7242E98B88f031abB006",
+    "decimals": 18,
+    "original_supply": "1000000000",
+    "burn_address": "0x000000000000000000000000000000000000dEaD"
+  }
+}
