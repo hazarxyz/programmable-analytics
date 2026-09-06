@@ -1,5 +1,3 @@
--- Source: https://github.com/hazarxyz/programmable-analytics
--- Dashboard: https://dune.com/programmablehq/analytics
 -- All finalized V4 transfers to the burn address on Robinhood Chain.
 -- One log request. Block timestamps use Dune when indexed, otherwise one RPC read.
 WITH rpc_response AS (
