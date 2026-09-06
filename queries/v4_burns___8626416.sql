@@ -25,9 +25,9 @@ WITH rpc_response AS (
         from_base(substr(json_extract_scalar(document, '$.logIndex'), 3), 16) AS log_index
     FROM log_documents
     WHERE lower(json_extract_scalar(document, '$.address')) = '0xc60ba256b44334a0cd2c7242e98b88f031abb006'
-      AND lower(json_extract_scalar(document, '$.topics[0]')) = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
-      AND lower(json_extract_scalar(document, '$.topics[2]')) = '0x000000000000000000000000000000000000000000000000000000000000dead'
-      AND coalesce(json_extract_scalar(document, '$.removed'), 'false') = 'false'
+      AND json_extract_scalar(document, '$.topics[0]') = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+      AND json_extract_scalar(document, '$.topics[2]') = '0x000000000000000000000000000000000000000000000000000000000000dead'
+      AND COALESCE(json_extract_scalar(document, '$.removed'), 'false') = 'false'
 ), ranked AS (
     SELECT *, row_number() OVER (PARTITION BY tx_hash, log_index ORDER BY block_number) AS duplicate_rank
     FROM decoded
