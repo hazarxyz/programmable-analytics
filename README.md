@@ -51,7 +51,7 @@ The key must belong to the `programmablehq` team and have Read/Write scope for p
 
 Changes merged into `main` are checked and then saved to the existing Dune queries. The workflow verifies the saved SQL after publishing. It checks query IDs and ownership and refuses archived, private or unsaved queries. For normal pushes it also refuses to overwrite SQL that was changed directly in Dune since the previous repository revision. To reconcile a direct Dune edit, pull it locally, review the diff and commit it.
 
-The **Dune queries** workflow can also be run manually with `verify` or `push`. A manual push explicitly publishes the selected main-branch SQL. No synchronization command executes the analytics query or changes its schedule.
+The **Dune queries** workflow can also be run manually with `verify`, `pull` or `push`. A pull exports the current public SQL as the `dune-query-source` artifact for review and import. A manual push explicitly publishes the selected main-branch SQL. No synchronization command executes the analytics query or changes its schedule.
 
 ## Dune API
 

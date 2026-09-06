@@ -13,9 +13,9 @@ on:
   workflow_dispatch:
     inputs:
       operation:
-        description: Verify saved SQL or publish the current main branch
+        description: Verify, export live SQL, or publish the current main branch
         type: choice
-        options: [verify, push]
+        options: [verify, pull, push]
         default: verify
         required: true
 
@@ -69,3 +69,11 @@ jobs:
           else
             python3 scripts/dune.py "$OPERATION"
           fi
+      - name: Export current Dune SQL
+        if: inputs.operation == 'pull' && env.DUNE_API_KEY != ''
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: dune-query-source
+          path: queries/*.sql
+          retention-days: 7
+          if-no-files-found: error
